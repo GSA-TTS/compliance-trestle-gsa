@@ -1,0 +1,41 @@
+# Added to aide with eventual transition away from setup.py
+[build-system]
+requires = [
+    "setuptools >= 74.1.1"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "compliance-trestle-gsa"
+version = "0.0.1"
+authors = [
+    { name="Ryan Ahearn", email="ryan.ahearn@gsa.gov" },
+]
+description = "Trestle plugin for GSA IT SSP validation and authoring"
+readme = "README.md"
+requires-python = ">= 3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "compliance-trestle>=3.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-xdist",
+    "flake8",
+    "flake8-pyproject",
+]
+
+[project.urls]
+Homepage = "https://github.com/gsa-tts/compliance-trestle-gsa"
+Issues = "https://github.com/gsa-tts/compliance-trestle-gsa/issues"
+
+[tool.flake8]
+max-line-length=120
+exclude = ".git,__pycache__,.venv,build,dist"
