@@ -2,7 +2,7 @@
   "system-security-plan": {
     "uuid": "d3251ed3-a090-4054-b5a2-2f9241be4621",
     "metadata": {
-      "title": "Generic system-security-plan created by trestle named valid-base-ssp.",
+      "title": "Generic system-security-plan created by trestle named valid-gsa-ssp.",
       "last-modified": "2024-09-05T14:54:50.655240+00:00",
       "version": "0.0.0",
       "oscal-version": "1.1.2",

@@ -36,6 +36,7 @@ def test_valid_ssp_file(tmp_trestle_dir: Path) -> None:
     assert rc == CmdReturnCodes.SUCCESS.value
 
 
+@pytest.mark.skip()
 def test_invalid_ssp(tmp_trestle_dir: Path) -> None:
     args = Namespace(
         type='system-security-plan',

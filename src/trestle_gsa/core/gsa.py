@@ -1,6 +1,8 @@
 import logging
 
-from trestle.oscal.common import Metadata
+from pydantic.v1 import ValidationError
+
+from trestle_gsa.core.metadata import Metadata
 from trestle.oscal.ssp import SystemSecurityPlan, SystemCharacteristics, SystemImplementation
 from trestle.common.list_utils import as_list
 
@@ -13,10 +15,6 @@ class GsaValidator:
         self._system_characteristics = ssp.system_characteristics
 
     @property
-    def metadata(self) -> Metadata:
-        return self._ssp.metadata
-
-    @property
     def system_characteristics(self) -> SystemCharacteristics:
         return self._ssp.system_characteristics
 
@@ -26,44 +24,17 @@ class GsaValidator:
 
     def validate(self) -> bool:
         valid = True
-        # validate metadata fields
-        valid = valid and self._validate_minimum_roles()
+        try:
+            Metadata.parse_obj(self._ssp.metadata)
+        except ValidationError as error:
+            logger.error(error)
+            valid = False
 
         # validate system-characteristics fields
         if not self.system_characteristics.system_name_short:
             logger.error('Missing system-name-short')
             valid = False
-        valid = valid and self._validate_info_types()
-
-        return valid
-
-    def _validate_minimum_roles(self) -> bool:
-        valid = True
-
-        roles = as_list(self.metadata.roles)
-        if roles:
-            role_ids = set(map(lambda r: r.id, roles))
-            minimum_role_ids = set([
-                'prepared-by',
-                'system-owner',
-                'information-system-security-officer',
-                'information-system-security-manager',
-                'authorizing-official',
-                'system-poc-technical',
-            ])
-            if not minimum_role_ids.issubset(role_ids):
-                logger.error(
-                    f'metadata.roles is missing the following role ids: {minimum_role_ids.difference(role_ids)}'
-                )
-                valid = False
-        else:
-            logger.error('Missing metadata.roles entries')
-            valid = False
-
-        for role in roles:
-            if not role.title:
-                logger.error(f'role.title is blank for role.id: {role.id}')
-                valid = False
+        valid = self._validate_info_types() and valid
 
         return valid
 
