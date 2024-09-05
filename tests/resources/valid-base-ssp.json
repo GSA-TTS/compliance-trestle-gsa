@@ -1,0 +1,64 @@
+{
+  "system-security-plan": {
+    "uuid": "d3251ed3-a090-4054-b5a2-2f9241be4621",
+    "metadata": {
+      "title": "Generic system-security-plan created by trestle named valid-base-ssp.",
+      "last-modified": "2024-09-05T14:54:50.655240+00:00",
+      "version": "0.0.0",
+      "oscal-version": "1.1.2"
+    },
+    "import-profile": {
+      "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_LOW-baseline_profile.json"
+    },
+    "system-characteristics": {
+      "system-ids": [
+        {
+          "id": "REPLACE_ME"
+        }
+      ],
+      "system-name": "REPLACE_ME",
+      "description": "REPLACE_ME",
+      "system-information": {
+        "information-types": [
+          {
+            "title": "REPLACE_ME",
+            "description": "REPLACE_ME"
+          }
+        ]
+      },
+      "status": {
+        "state": "operational"
+      },
+      "authorization-boundary": {
+        "description": "REPLACE_ME"
+      }
+    },
+    "system-implementation": {
+      "users": [
+        {
+          "uuid": "fb90b0f9-fe88-4fd8-b533-989cddaf1c96"
+        }
+      ],
+      "components": [
+        {
+          "uuid": "66bbdc7e-1658-4a00-8208-8e9ea1219bad",
+          "type": "REPLACE_ME",
+          "title": "REPLACE_ME",
+          "description": "REPLACE_ME",
+          "status": {
+            "state": "under-development"
+          }
+        }
+      ]
+    },
+    "control-implementation": {
+      "description": "REPLACE_ME",
+      "implemented-requirements": [
+        {
+          "uuid": "7600c64d-2dd3-4298-bd03-8983aff916dd",
+          "control-id": "REPLACE_ME"
+        }
+      ]
+    }
+  }
+}

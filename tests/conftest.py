@@ -26,6 +26,8 @@ from pytest import MonkeyPatch
 from trestle.cli import Trestle
 from trestle.common.err import TrestleError
 
+from tests import const
+
 
 @pytest.fixture(scope='function')
 def tmp_trestle_dir(tmp_path: pathlib.Path, monkeypatch: MonkeyPatch) -> Iterator[pathlib.Path]:
@@ -40,9 +42,18 @@ def tmp_trestle_dir(tmp_path: pathlib.Path, monkeypatch: MonkeyPatch) -> Iterato
     monkeypatch.setattr(sys, 'argv', testargs)
     try:
         Trestle().run()
+        _import_ssp(pytest_cwd, const.VALID_SSP_NAME, monkeypatch)
+        _import_ssp(pytest_cwd, const.VALID_BASE_SSP_NAME, monkeypatch)
     except BaseException as e:
         raise TrestleError(f'Initialization failed for temporary trestle directory: {e}.')
     else:
         yield tmp_path
     finally:
         os.chdir(pytest_cwd)
+
+
+def _import_ssp(cwd: pathlib.Path, ssp_name: str, monkeypatch: MonkeyPatch) -> None:
+    fixture_path = cwd / 'tests' / 'resources'
+    testargs = ['trestle', 'import', '-f', str(fixture_path / f'{ssp_name}.json'), '-o', ssp_name]
+    monkeypatch.setattr(sys, 'argv', testargs)
+    Trestle().run()
