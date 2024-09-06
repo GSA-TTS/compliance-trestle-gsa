@@ -11,8 +11,10 @@ from pydantic.v1 import Field, validator
 class Role(RoleBase):
     title: str = Field(..., min_length=1)
 
+
 class Party(PartyBase):
     name: str
+
 
 class Metadata(MetadataBase):
     roles: List[Role]
@@ -42,5 +44,5 @@ class Metadata(MetadataBase):
             if rp.role_id == 'prepared-by':
                 has_prepared_by = True
                 break
-        assert has_prepared_by, f'metadata.responsible-parties must include an entry for the prepared-by role'
+        assert has_prepared_by, 'metadata.responsible-parties must include an entry for the prepared-by role'
         return responsible_parties

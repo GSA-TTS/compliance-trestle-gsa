@@ -61,6 +61,36 @@
       "system-name": "REPLACE_ME",
       "system-name-short": "REPLACE_ME",
       "description": "REPLACE_ME",
+      "responsible-parties": [
+        {
+          "role-id": "system-owner",
+          "party-uuids": []
+        },
+        {
+          "role-id": "authorizing-official",
+          "party-uuids": []
+        }
+      ],
+      "security-impact-level": {
+        "security-objective-confidentiality": "low",
+        "security-objective-integrity": "low",
+        "security-objective-availability": "low"
+      },
+      "security-sensitivity-level": "low",
+      "props": [
+        {
+          "name": "identity-assurance-level",
+          "value": "1"
+        },
+        {
+          "name": "authenticator-assurance-level",
+          "value": "1"
+        },
+        {
+          "name": "federation-assurance-level",
+          "value": "1"
+        }
+      ],
       "system-information": {
         "information-types": [
           {
@@ -85,7 +115,34 @@
         "state": "operational"
       },
       "authorization-boundary": {
-        "description": "REPLACE_ME"
+        "description": "REPLACE_ME",
+        "diagrams": [
+          {
+            "uuid": "0ad62b2d-2fe2-4cb8-911d-bd5acd853408",
+            "caption": "Authorization Boundary Diagram",
+            "links": [
+              {
+                "rel": "diagram",
+                "href": "https://link.to/my/diagram.png"
+              }
+            ]
+          }
+        ]
+      },
+      "data-flow": {
+        "description": "REPLACE_ME",
+        "diagrams": [
+          {
+            "uuid": "a730e103-aae6-4797-99ff-dcaed52a66ce",
+            "caption": "Data Flow Diagram",
+            "links": [
+              {
+                "rel": "diagram",
+                "href": "https://link.to/my/data/flow/diagram.png"
+              }
+            ]
+          }
+        ]
       }
     },
     "system-implementation": {
