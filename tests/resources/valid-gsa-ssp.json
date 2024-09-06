@@ -34,6 +34,19 @@
           "id": "system-poc-technical",
           "title": "Technical Point of Contact"
         }
+      ],
+      "parties": [
+        {
+          "uuid": "f7f8cecf-f089-485d-9233-9f0f8e217690",
+          "type": "organization",
+          "name": "TTS DevTools"
+        }
+      ],
+      "responsible-parties": [
+        {
+          "role-id": "prepared-by",
+          "party-uuids": ["f7f8cecf-f089-485d-9233-9f0f8e217690"]
+        }
       ]
     },
     "import-profile": {
