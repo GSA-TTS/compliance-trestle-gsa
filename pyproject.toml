@@ -21,7 +21,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "compliance-trestle>=3.4.0",
+    "compliance-trestle",
 ]
 
 [project.optional-dependencies]
