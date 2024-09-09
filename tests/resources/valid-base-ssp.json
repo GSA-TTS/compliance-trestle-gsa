@@ -11,6 +11,13 @@
           "id": "system-owner",
           "title": "System Owner"
         }
+      ],
+      "parties": [
+        {
+          "uuid": "f79cf498-a324-424e-8052-a346d246edd5",
+          "name": "GSA IT",
+          "type": "organization"
+        }
       ]
     },
     "import-profile": {

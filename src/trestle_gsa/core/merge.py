@@ -31,7 +31,14 @@ def _deduplicated_list(a: list, b: list) -> list:
     if 'id' in a[0]:
         # deduplicate by id
         return list({x['id']: x for x in combined_list}.values())
+    elif 'uuid' in a[0]:
+        # deduplicate by uuid
+        return list({x['uuid']: x for x in combined_list}.values())
     else:
-        # deduplicate by all fields via json string
-        dedupped = set(json.dumps(item, sort_keys=True) for item in combined_list)
-        return list(json.loads(x) for x in dedupped)
+        try:
+            # deduplicate by all fields via json string
+            dedupped = set(json.dumps(item, sort_keys=True) for item in combined_list)
+            return list(json.loads(x) for x in dedupped)
+        except TypeError:
+            # error dumping to json, just combine the lists
+            return combined_list
