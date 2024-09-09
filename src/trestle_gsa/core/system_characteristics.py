@@ -13,9 +13,13 @@ from trestle.oscal.common import ResponsibleParty, Property, Link
 from pydantic.v1 import Field, validator
 
 
+def _create_default_diagram_link() -> List[Link]:
+    return [Link(rel="diagram", href="REPLACE_ME")]
+
+
 class Diagram(DiagramBase):
-    caption: str = Field(..., min_length=1)
-    links: List[Link]
+    caption: str = Field("REPLACE_ME", min_length=1)
+    links: List[Link] = Field(default_factory=_create_default_diagram_link)
 
     @validator('links')
     def has_diagram_link(cls, links: List[Link]) -> List[Link]:
@@ -46,13 +50,28 @@ class SystemInformation(SystemInformationBase):
     information_types: List[InformationType]
 
 
+def _create_default_props() -> List[Property]:
+    return [
+        Property(name="identity-assurance-level", value="REPLACE_ME"),
+        Property(name="authenticator-assurance-level", value="REPLACE_ME"),
+        Property(name="federation-assurance-level", value="REPLACE_ME")
+    ]
+
+
+def _create_default_responsible_parties() -> List[ResponsibleParty]:
+    return [
+        ResponsibleParty(role_id='system-owner', party_uuids=[]),
+        ResponsibleParty(role_id='authorizing-official', party_uuids=[])
+    ]
+
+
 class SystemCharacteristics(SystemCharacteristicsBase):
-    system_name_short: str
+    system_name_short: str = Field("REPLACE_ME")
     system_information: SystemInformation
-    responsible_parties: List[ResponsibleParty]
-    security_sensitivity_level: str
+    responsible_parties: List[ResponsibleParty] = Field(default_factory=_create_default_responsible_parties)
+    security_sensitivity_level: str = Field("REPLACE_ME")
     security_impact_level: SecurityImpactLevel
-    props: List[Property]
+    props: List[Property] = Field(default_factory=_create_default_props)
     authorization_boundary: AuthorizationBoundary
     data_flow: DataFlow
 

@@ -35,10 +35,10 @@ class ValidateCmd(CommandPlusDocs):
         return super()._validate_arguments(args)
 
     def _run(self, args: argparse.Namespace) -> int:
-        logger.debug('Entering trestle gsa-validate')
-        valid = False
-
         log.set_log_level_from_args(args)
+        logger.debug('Entering trestle gsa-validate')
+
+        valid = False
 
         mode_args = argparse.Namespace(mode=VAL_MODE_ALL)
         validator = vfact.validator_factory.get(mode_args)

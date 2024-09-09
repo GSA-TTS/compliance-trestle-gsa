@@ -5,7 +5,13 @@
       "title": "Generic system-security-plan created by trestle named valid-base-ssp.",
       "last-modified": "2024-09-05T14:54:50.655240+00:00",
       "version": "0.0.0",
-      "oscal-version": "1.1.2"
+      "oscal-version": "1.1.2",
+      "roles": [
+        {
+          "id": "system-owner",
+          "title": "System Owner"
+        }
+      ]
     },
     "import-profile": {
       "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_LOW-baseline_profile.json"
@@ -31,7 +37,13 @@
       },
       "authorization-boundary": {
         "description": "REPLACE_ME"
-      }
+      },
+      "responsible-parties": [
+        {
+          "role-id": "system-owner",
+          "party-uuids": ["619e38b7-6911-47fb-adf8-5f259bc8a15c"]
+        }
+      ]
     },
     "system-implementation": {
       "users": [
