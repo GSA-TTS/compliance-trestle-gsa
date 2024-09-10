@@ -6,7 +6,7 @@ from trestle_gsa.core.metadata import Metadata
 from trestle_gsa.core.system_characteristics import SystemCharacteristics
 from trestle.oscal.ssp import SystemSecurityPlan
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(f'trestle.{__name__}')
 
 
 class GsaValidator:

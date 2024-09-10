@@ -3,12 +3,13 @@ import json
 
 from trestle.common import log
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(f'trestle.{__name__}')
 trace = log.Trace(logger)
 
 
 def deep_merge(a: dict, b: dict) -> dict:
     for key in b:
+        trace.log(f'deep_merge key: {key}')
         if key in a and a[key]:
             if isinstance(a[key], dict) and isinstance(b[key], dict):
                 trace.log(f'Deep merge for {key}')

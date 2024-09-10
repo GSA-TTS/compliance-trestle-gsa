@@ -11,7 +11,7 @@ from trestle.core.commands.common.return_codes import CmdReturnCodes
 
 from trestle_gsa.core.gsa import GsaValidator
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(f'trestle.{__name__}')
 
 
 class ValidateCmd(CommandPlusDocs):

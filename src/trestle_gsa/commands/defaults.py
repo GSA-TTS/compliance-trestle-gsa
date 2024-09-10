@@ -18,7 +18,7 @@ from trestle_gsa.core.metadata import Metadata
 from trestle_gsa.core.system_characteristics import SystemCharacteristics, InformationType
 from trestle_gsa.core.merge import deep_merge
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(f'trestle.{__name__}')
 
 
 class DefaultsCmd(CommandPlusDocs):
