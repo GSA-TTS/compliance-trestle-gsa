@@ -52,9 +52,9 @@ class SystemInformation(SystemInformationBase):
 
 def _create_default_props() -> List[Property]:
     return [
-        Property(name="identity-assurance-level", value="REPLACE_ME"),
-        Property(name="authenticator-assurance-level", value="REPLACE_ME"),
-        Property(name="federation-assurance-level", value="REPLACE_ME")
+        Property(name="identity-assurance-level", value="REPLACE_ME", ns="http://csrc.nist.gov/ns/oscal"),
+        Property(name="authenticator-assurance-level", value="REPLACE_ME", ns="http://csrc.nist.gov/ns/oscal"),
+        Property(name="federation-assurance-level", value="REPLACE_ME", ns="http://csrc.nist.gov/ns/oscal")
     ]
 
 
