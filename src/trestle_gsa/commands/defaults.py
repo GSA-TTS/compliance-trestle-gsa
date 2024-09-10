@@ -60,7 +60,7 @@ class DefaultsCmd(CommandPlusDocs):
                 InformationType.parse_obj(info_type)
                 all_info_types.append(info_type)
             except ValidationError as error:
-                logger.warning(error)
+                logger.debug(error)
                 new_type = deep_merge(info_type.dict(), generators.generate_sample_model(InformationType).dict())
                 all_info_types.append(new_type)
         element_path = ElementPath('system-security-plan.system-characteristics.system-information.information-types')
