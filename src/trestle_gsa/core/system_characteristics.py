@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from trestle.oscal.ssp import AuthorizationBoundary as AuthorizationBoundaryBase
 from trestle.oscal.ssp import DataFlow as DataFlowBase
@@ -7,7 +7,7 @@ from trestle.oscal.ssp import Impact as ImpactBase
 from trestle.oscal.ssp import InformationType as InformationTypeBase
 from trestle.oscal.ssp import SystemCharacteristics as SystemCharacteristicsBase
 from trestle.oscal.ssp import SystemInformation as SystemInformationBase
-from trestle.oscal.ssp import Selected, SecurityImpactLevel
+from trestle.oscal.ssp import Selected, SecurityImpactLevel, Categorization
 from trestle.oscal.common import ResponsibleParty, Property, Link
 
 from pydantic.v1 import Field, validator
@@ -44,6 +44,8 @@ class InformationType(InformationTypeBase):
     confidentiality_impact: Impact
     integrity_impact: Impact
     availability_impact: Impact
+    categorizations: Optional[List[Categorization]] = Field(
+        [Categorization(system="http://doi.org/10.6028/NIST.SP.800-60v2r1", information_type_ids=["REPLACE_ME"])])
 
 
 class SystemInformation(SystemInformationBase):
