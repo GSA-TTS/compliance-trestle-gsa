@@ -1,0 +1,21 @@
+name: Build and Test
+
+on: [pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: make develop
+    - name: Test
+      run: make test
+    - name: Lint
+      run: make code-lint
