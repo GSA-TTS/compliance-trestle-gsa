@@ -52,6 +52,27 @@ def tmp_trestle_dir(tmp_path: pathlib.Path, monkeypatch: MonkeyPatch) -> Iterato
         os.chdir(pytest_cwd)
 
 
+@pytest.fixture(scope='function')
+def split_ssp_model(tmp_trestle_dir: pathlib.Path, monkeypatch: MonkeyPatch) -> str:
+    return _split_ssp('system-security-plan.metadata', monkeypatch)
+
+
+@pytest.fixture(scope='function')
+def metadata_split_ssp(tmp_trestle_dir: pathlib.Path, monkeypatch: MonkeyPatch) -> str:
+    return _split_ssp('system-security-plan.metadata.revisions', monkeypatch)
+
+
+def _split_ssp(elements: str, monkeypatch: MonkeyPatch) -> str:
+    file_path = f'system-security-plans/{const.VALID_SSP_NAME}/system-security-plan.json'
+    testargs = ['trestle', 'split', '-f', file_path, '-e', elements]
+    monkeypatch.setattr(sys, 'argv', testargs)
+    try:
+        Trestle().run()
+    except BaseException as e:
+        raise TrestleError(f'trestle split failed within {tmp_trestle_dir}: {e}.')
+    return const.VALID_SSP_NAME
+
+
 def _import_ssp(cwd: pathlib.Path, ssp_name: str, monkeypatch: MonkeyPatch) -> None:
     fixture_path = cwd / 'tests' / 'resources'
     testargs = ['trestle', 'import', '-f', str(fixture_path / f'{ssp_name}.json'), '-o', ssp_name]
