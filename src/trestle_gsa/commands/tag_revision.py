@@ -10,7 +10,6 @@ from trestle.core.models.actions import CreatePathAction, UpdateAction, WriteFil
 from trestle.core.models.elements import Element, ElementPath
 from trestle.core.models.plans import Plan
 from trestle.core.models.file_content_type import FileContentType
-from trestle.oscal import OSCAL_VERSION
 from trestle.oscal.common import Revision, Property
 
 from trestle_gsa.core.metadata import Metadata
@@ -65,7 +64,7 @@ class TagRevisionCmd(CommandPlusDocs):
 
         revision = Revision(
             version=(args.version or metadata.version),
-            oscal_version=OSCAL_VERSION,
+            oscal_version=metadata.oscal_version,
             last_modified=(args.last_modified or metadata.last_modified),
             title=args.changes
         )
