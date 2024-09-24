@@ -1,7 +1,6 @@
 import argparse
 import logging
 from pathlib import Path
-from datetime import datetime
 
 import trestle.common.log as log
 from trestle.common.err import TrestleError
@@ -36,11 +35,11 @@ class TagRevisionCmd(CommandPlusDocs):
             help='UUID of party who authored this revision. Optional',
         )
         self.add_argument(
-            '-v', '--version', type=str, default=None,
+            '-vn', '--version', type=str, default=None,
             help='Version to set for this revision. Defaults to main metadata.version'
         )
         self.add_argument(
-            '-l', '--last-modified', type=datetime, default=None,
+            '-l', '--last-modified', type=str, default=None,
             help='last-modified to set for this revision. Defaults to main metadata.last-modified'
         )
 
