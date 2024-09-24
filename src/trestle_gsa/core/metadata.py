@@ -37,7 +37,8 @@ def _create_default_responsible_parties() -> List[ResponsibleParty]:
 class Metadata(MetadataBase):
     roles: List[Role] = Field(default_factory=_create_default_roles)
     parties: List[Party]
-    responsible_parties: List[ResponsibleParty] = Field(default_factory=_create_default_responsible_parties)
+    responsible_parties: List[ResponsibleParty] = Field(
+        default_factory=_create_default_responsible_parties, alias='responsible-parties')
 
     @validator('roles')
     def has_minimum_role_ids(cls, roles: List[Role]) -> List[Role]:
