@@ -2,7 +2,7 @@ from typing import List
 
 from trestle.oscal.common import Metadata as MetadataBase
 from trestle.oscal.common import Role as RoleBase
-from trestle.oscal.common import Party as PartyBase
+from trestle.oscal.common import Parties as PartyBase
 from trestle.oscal.common import ResponsibleParty
 
 from pydantic.v1 import Field, validator
