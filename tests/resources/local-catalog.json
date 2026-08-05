@@ -1,0 +1,11 @@
+{
+  "catalog": {
+    "uuid": "3751cd9f-dc80-4dd0-a046-525ea758ee80",
+    "metadata": {
+      "title": "GSA Test Catalog",
+      "last-modified": "2026-08-05T09:27:40.849202-04:00",
+      "version": "1.0.0",
+      "oscal-version": "1.2.1"
+    }
+  }
+}

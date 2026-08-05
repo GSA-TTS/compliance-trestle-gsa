@@ -42,6 +42,11 @@ def tmp_trestle_dir(tmp_path: pathlib.Path, monkeypatch: MonkeyPatch) -> Iterato
     monkeypatch.setattr(sys, 'argv', testargs)
     try:
         Trestle().run()
+        # Import local catalog/profile first so the SSPs' import-profile href
+        # (trestle://profiles/...) resolves without network access or '..' path
+        # segments (which trestle 4.2.0's path-traversal guard rejects).
+        _import_model(pytest_cwd, const.LOCAL_CATALOG_NAME, monkeypatch)
+        _import_model(pytest_cwd, const.LOCAL_PROFILE_NAME, monkeypatch)
         _import_ssp(pytest_cwd, const.VALID_SSP_NAME, monkeypatch)
         _import_ssp(pytest_cwd, const.VALID_BASE_SSP_NAME, monkeypatch)
     except BaseException as e:
@@ -74,7 +79,11 @@ def _split_ssp(elements: str, monkeypatch: MonkeyPatch) -> str:
 
 
 def _import_ssp(cwd: pathlib.Path, ssp_name: str, monkeypatch: MonkeyPatch) -> None:
+    _import_model(cwd, ssp_name, monkeypatch)
+
+
+def _import_model(cwd: pathlib.Path, model_name: str, monkeypatch: MonkeyPatch) -> None:
     fixture_path = cwd / 'tests' / 'resources'
-    testargs = ['trestle', 'import', '-f', str(fixture_path / f'{ssp_name}.json'), '-o', ssp_name]
+    testargs = ['trestle', 'import', '-f', str(fixture_path / f'{model_name}.json'), '-o', model_name]
     monkeypatch.setattr(sys, 'argv', testargs)
     Trestle().run()
