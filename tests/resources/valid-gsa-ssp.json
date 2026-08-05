@@ -57,7 +57,7 @@
       ]
     },
     "import-profile": {
-      "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_LOW-baseline_profile.json"
+      "href": "trestle://profiles/local-profile/profile.json"
     },
     "system-characteristics": {
       "system-ids": [

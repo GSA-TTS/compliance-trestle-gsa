@@ -1,0 +1,17 @@
+{
+  "profile": {
+    "uuid": "d4d54675-ca38-4d24-84ba-f945d45ea868",
+    "metadata": {
+      "title": "GSA Test Profile",
+      "last-modified": "2026-08-05T09:27:40.850319-04:00",
+      "version": "1.0.0",
+      "oscal-version": "1.2.1"
+    },
+    "imports": [
+      {
+        "href": "trestle://catalogs/local-catalog/catalog.json",
+        "include-all": {}
+      }
+    ]
+  }
+}
